@@ -1,8 +1,9 @@
 import { useTranslation } from "next-i18next";
 import LangDropDown from "../lang-dropdown";
 import { useState } from "react";
+import Image from 'next/image';
 import axios from 'axios';
-
+import imaglogo from '../../public/snaptik-logo.png'; // Adjust the path as necessary
 export default function HeroContainer() {
   const [url, setUrl] = useState(""); // State for URL input
   const { t } = useTranslation("hero");
@@ -39,24 +40,28 @@ export default function HeroContainer() {
   return (
     <>
       <div className='bg-white h-20'>
-        <div className="flex flex-row justify-between">
-          <div className='text-black'></div>
+        <div className="flex flex-row justify-between h-full items-center">
+          {/* <div className='text-black'></div> */}
+          <div>
+            <Image src={imaglogo} alt="SnapTik Logo" width={150} height={50} />
+          </div>
           <div className=''>
             <LangDropDown />
           </div>
+        
         </div>
       </div>
 
       <div className="grid grid-rows-1 gap-4 bg-blue-700 h-[300px] justify-items-center">
-        <h1 className="text-white text-4xl ">
+        <h1 className="text-white text-3xl justify-items-center flex align-center">
           {t("title").split(" ").map((word, index) => (
-            <span className="pt-2.5 pr-2.5 inline-block slide-up" key={index}>
+            <span className="pt-2.5 inline-block slide-up" key={index}>
               {word}
             </span>
           ))}
         </h1>
-        <p className="text-white mb-[60px]">{t("description")}</p>
-        <form onSubmit={handleSubmit} className="flex flex-row">
+        <p className="text-white">{t("description")}</p>
+        <form onSubmit={handleSubmit} className="flex flex-row w-screen p-2.5 justify-center">
           <input
             className="mb-[80px] h-10 w-[400px]"
             value={url}
