@@ -5,17 +5,10 @@ export default function Footer() {
     <footer className="mt-10 bg-[#f8f9fa] text-sm">
       <section className="flex pt-10 px-8 pb-5 flex-col md:flex-row">
         <div className="flex mr-8 mb-8">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
-            className="grayscale"
-            width={80}
-            height={80}
-            alt="google"
-          />
         </div>
         <div className="flex flex-1 gap-5 text-[#5f6368] mb-6 md:mb-0 flex-wrap md:flex-nowrap">
-          <a className="hover:text-black hover:cursor-pointer">About Google</a>
-          <a className="hover:text-black hover:cursor-pointer">Google Product</a>
+          <a className="hover:text-black hover:cursor-pointer">About snaptik</a>
+          <a className="hover:text-black hover:cursor-pointer">snaptik Product</a>
           <a className="hover:text-black hover:cursor-pointer">Privacy</a>
           <a className="hover:text-black hover:cursor-pointer">Terms</a>
         </div>

@@ -1,72 +1,64 @@
-import { useEffect, useState } from "react";
-import Hamburger from "../../svg/Hamburger";
+// eslint-disable-next-line react/no-unescaped-entities
+import React, { useState } from "react";
 
-export default function Header() {
-  const [isScrolling, setIsScrolling] = useState(false);
-  // Prev scroll value is used when user start scrolling up ward
-  const [prevScrollValue, setPrevScrollValue] = useState(0);
+// Data for sculpture description
+const sculptureList = [
+  {
+    description:
+      "Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.",
+  },
+];
 
-  const checkScrolling = () => {
-    // user scrolling down --> window.scrollY > prevScrollValue
-    setIsScrolling(window.scrollY > prevScrollValue);
-    setPrevScrollValue(window.scrollY);
-  };
+function Index() {
+  const [showMore, setShowMore] = useState(false);
+  const [index, setIndex] = useState(0);
 
-  useEffect(() => {
-    if (window.scrollY > 100) {
-      setIsScrolling(true);
-      setPrevScrollValue(window.scrollY);
-    }
-  }, []);
+  function handleMoreClick() {
+    setShowMore(!showMore);
+  }
 
-  useEffect(() => {
-    window.addEventListener("scroll", checkScrolling, { passive: true });
-
-    () => {
-      return window.removeEventListener("scroll", checkScrolling);
-    };
-  }, [prevScrollValue]);
-
-  const openSidebar = () => {
-    document
-      .getElementById("sidebar")
-      ?.classList.add("!visible", "translate-x-0");
-  };
+  const sculpture = sculptureList[index];
 
   return (
-    <div
-      className={`flex items-center justify-between shadow-lg h-16 px-2 w-full sticky top-0 z-[10] bg-white transition-all ${isScrolling ? "-translate-y-16" : ""
-        }`}
-    >
-      <div
-        className="flex items-center text-3xl text-gray-500 md:hidden cursor-pointer"
-        onClick={() => openSidebar()}
-      >
-        <Hamburger />
-      </div>
-      <div className="flex items-center max-md:flex-1">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
-          className="ml-4 w-14 h-14 md:w-20 md:h-20"
-          alt="google"
-        />
-        <a href="" className="text-lg text-slate-500  ml-2">
-          Account
-        </a>
-        <div className="h-full ml-4 flex items-center relative max-md:hidden">
-          <p className="after:content-[''] after:bg-blue-500 after:absolute after:bottom-0 after:h-0.5 after:left-2 after:right-2">
-            Overview
-          </p>
+    <>
+      <div className="grid grid-cols-1 gap-10 mt-[200px] ml-[40px]">
+        {/* Section 1 */}
+        <div className="flex flex-col">
+          <div className="text-black font-bold text-xl">Download SnapTik App</div>
+          <div>
+            I now provide an app for downloading TikTok videos. It is fast, easy, with no watermark and HD quality.
+          </div>
+        </div>
+
+        {/* Section 2 */}
+        <div className="flex flex-col">
+          <div className="text-black font-bold text-xl">Download TikTok videos (Musically) Without Watermark for FREE</div>
+          <div>
+            SnapTik.App is one of the best TikTok Downloaders available online to download TikTok videos without a watermark. You dont need to install any software—just a TikTok video link, and you are good to go.
+          </div>
+        </div>
+
+        {/* Section 3 */}
+        <div className="flex flex-col">
+          <div className="text-black font-bold text-xl">Key Features:</div>
+          <ul>
+            <li>No watermark for better quality, which most other tools  provide.</li>
+            <li>Download TikTok videos on any device: mobile, PC, or tablet.</li>
+            <li>No need to download or install any software. Just use your browser.</li>
+            <li>SnapTik allows downloading TikTok slideshows as MP4 videos, merging images and music seamlessly.</li>
+          </ul>
         </div>
       </div>
-      <div className="flex gap-6">
-        <button className="text-blue-500 max-md:hidden">
-          Create an Account
+
+      {/* Sculpture Description Section */}
+      <div className="grid grid-cols-1 gap-10 mt-[80px]">
+        <button className="border border-red-600 p-2" onClick={handleMoreClick}>
+          {showMore ? "Hide details" : "HOW TO DOWNLOAD VIDEO TIKTOK WITH NO WATERMARK details"}
         </button>
-        <button className="bg-blue-500 py-3 px-5 rounded text-white hover:bg-blue-700 max-md:px-2 max-md:text-sm">
-          Go To Google Account
-        </button>
+        {showMore && <p>{sculpture.description}</p>}
       </div>
-    </div>
+    </>
   );
 }
+
+export default Index;

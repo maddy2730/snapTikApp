@@ -18,18 +18,19 @@ export default function Home() {
     <>
       {/* Adding Meta tags for SEO */}
       <Head>
-        <title>Google Account</title>
+        <title>Tik Tok video downloader</title>
         <meta />
       </Head>
 
-      <Header />
-      <Sidebar />
+      
+      
       <HeroContainer />
-      <Feature />
-      {CONTAINER_DETAILS.map((detail) => (
+     {/* <Feature />*/}
+     <Header />
+     {/* {CONTAINER_DETAILS.map((detail) => (
         <TabsAndSliderSection key={detail.id} containerDetail={detail} />
       ))}
-      <GoToGoogle />
+      <GoToGoogle /> */}
       <Footer />
     </>
   );
