@@ -53,7 +53,7 @@ export default function HeroContainer() {
       </div>
 
       <div className="grid grid-rows-1 gap-4 bg-blue-700 h-[300px] justify-items-center">
-        <h1 className="text-white text-3xl justify-items-center flex align-center">
+        <h1 className="text-white text-3xl justify-items-center flex  items-center">
           {t("title").split(" ").map((word, index) => (
             <span className="pt-2.5 inline-block slide-up" key={index}>
               {word}
